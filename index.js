@@ -48,7 +48,6 @@ client.connect(err => {
         console.log("added new book", newBook);
         bookCollection.insertOne(newBook)
             .then(result => {
-                console.log('inserted count', result.insertedCount);
                 res.send(result.insertedCount > 0);
             })
     })
@@ -66,7 +65,6 @@ client.connect(err => {
         const bearer = req.headers.authorization;
         if (bearer && bearer.startsWith('Bearer ')) {
             const idToken = bearer.split(' ')[1];
-            console.log({ idToken });
 
             admin
                 .auth()
